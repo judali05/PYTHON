@@ -1,15 +1,8 @@
-# Python programa de ejemplo
-# selenium
-#ejemplo_2
+import sys
+from PySide6.QtWidgets import QApplication, QLabel
 
-#navegar con links
-
-# importamos el webdriver
-from selenium import webdriver 
-
-# creamos el objeto driver
-driver = webdriver.Chrome() 
-
-# entramos a google y hacemos una busqueda
-driver.get("https://www.google.com/search?q=whatsapp")
-
+app = QApplication(sys.argv)
+# This HTML approach will be valid too!
+label = QLabel("<font color=red size=6>Hello World!</font>")
+label.show()
+app.exec()

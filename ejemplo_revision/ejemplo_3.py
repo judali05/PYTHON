@@ -1,19 +1,16 @@
-# import webdriver
-from selenium import webdriver
-from selenium.webdriver.common.by import By
+import sys
+from PySide6.QtWidgets import QApplication, QPushButton
+from PySide6.QtCore import Slot
 
+@Slot()
+def say_hello():
+ print("Button clicked, Hello!")
 
-# create webdriver object
-driver = webdriver.Chrome()
-
-
-# get geeksforgeeks.org
-driver.get("https://github.com/login")
-
-# get element
-element = driver.find_element(By.NAME, 'login')
-
-# send keys
-element.send_keys("hooolalallqa")
-
-
+# Create the Qt Application
+app = QApplication(sys.argv)
+# Create a button, connect it and show it
+button = QPushButton("Click me")
+button.clicked.connect(say_hello)
+button.show()
+# Run the main Qt loop
+app.exec()

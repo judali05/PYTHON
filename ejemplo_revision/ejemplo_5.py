@@ -1,21 +1,32 @@
-# import webdriver 
-from selenium import webdriver 
-from selenium.webdriver.common.by import By
+import sys
+from PySide6.QtWidgets import (QLineEdit, QPushButton, QApplication,
+    QVBoxLayout, QDialog)
 
-# create webdriver object 
-driver = webdriver.Chrome() 
-	
-# set implicit wait time 
- # seconds 
-driver.implicitly_wait(50) # espera el tiempo indicado si el codigo no funciona asta dar error - da un tiempo de espera hasta que el elemento este disponible
+class Form(QDialog):
 
-# get geeksforgeeks.org 
-driver.get("https://github.com/login") 
-	
-# get element after 10 seconds 
-element = driver.find_element(By.NAME, 'login_')
+    def __init__(self, parent=None):
+        super(Form, self).__init__(parent)
+        # Create widgets
+        self.edit = QLineEdit("Write my name here")
+        self.button = QPushButton("Show Greetings")
+        # Create layout and add widgets
+        layout = QVBoxLayout()
+        layout.addWidget(self.edit)
+        layout.addWidget(self.button)
+        # Set dialog layout
+        self.setLayout(layout)
+        # Add button signal to greetings slot
+        self.button.clicked.connect(self.greetings)
 
+    # Greets the user
+    def greetings(self):
+        print(f"Hello {self.edit.text()}")
 
-# click element 
-element.click() 
-
+if __name__ == '__main__':
+    # Create the Qt Application
+    app = QApplication(sys.argv)
+    # Create and show the form
+    form = Form()
+    form.show()
+    # Run the main Qt loop
+    sys.exit(app.exec())

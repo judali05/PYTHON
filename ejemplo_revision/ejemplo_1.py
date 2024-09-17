@@ -1,18 +1,7 @@
+import PySide6.QtCore
 
-# Python programa de ejemplo
-# selenium
-#ejemplo_1
+# Prints PySide6 version
+print(PySide6.__version__)
 
-#conexion al driver del navegador seleccionado
-
-# importamos el webdriver
-from selenium import webdriver
-
-# creamos el objeto driver
-driver = webdriver.Chrome()
-
-# entramos a
-driver.get("https://google.co.in")
-
-#si no funciona se coloca este codigo 
-# driver = webdriver.Chrome(executable_path='drivers/chromedriver.exe') 
+# Prints the Qt version used to compile PySide6
+print(PySide6.QtCore.__version__)
